@@ -1,0 +1,63 @@
+﻿@model FramSales.Models.Contact
+
+@using (Html.BeginForm("ContactDetails", "Contacts", FormMethod.Post))
+{
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<table class="table-condensed">
+					<tr>
+						<td align="right">
+							@Html.HiddenFor(m => m.ContactId)
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.FirstName)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.FirstName)
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.FirstName)
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.LastName)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.LastName, new { @readonly = "readonly" })
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.LastName)
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.Email)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.Email, new { @readonly = "readonly" })
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.Email)
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="Save to CRM" class="btn btn-primary" />
+						</td>
+					</tr>
+				</table>
+					<br />
+					<br />
+					@ViewBag.ErrorMessage;
+				</td>
+			</tr>
+		</table>
+	}
+

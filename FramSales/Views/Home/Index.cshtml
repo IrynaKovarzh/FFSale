@@ -1,0 +1,57 @@
+﻿@model FramSales.Models.LoginModel
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<table class="table-condensed">
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.UserName)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.UserName)
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.UserName)
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.Password)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.Password)
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							@Html.LabelFor(m => m.CRMService)
+						</td>
+						<td align="right">
+							@Html.TextBoxFor(m => m.CRMService)
+							&nbsp;&nbsp;
+							<br />
+							@Html.ValidationMessageFor(m => m.CRMService)
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="LOGIN" class="btn btn-primary" />
+						</td>
+					</tr>
+				</table>
+				<br />
+				<br />
+				@ViewBag.Error;
+			</td>
+		</tr>
+	</table>
+}

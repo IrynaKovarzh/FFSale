@@ -1,0 +1,106 @@
+﻿@model FramSales.Models.RelatedContactsAccounts
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title></title>
+</head>
+<!--Contacts Accounts Tabs-->
+
+<body>
+	<div class="container">
+		<div role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">Contacts</a></li>
+				<li role="presentation"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">Accounts</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="first">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].FirstName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].LastName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].Email)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].Mobile)
+								</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model.Contacts)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.FirstName)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.LastName)
+									</td>
+									<td>
+										<!-- @Html.DisplayFor(modelItem => item.Email)-->
+										@Html.ActionLink("ContactDetails", "ContactDetails", new { id = item.ContactId }, null)
+										<!-- It's rendered HTML: <a href="/Home/ContactDetails/187">ContactDetails</a> -->
+									</td>l
+									<td>
+										@Html.DisplayFor(modelItem => item.Mobile)
+									</td>
+									<!-- <td>
+										<a asp-page="./ContactDetails" asp-route-id="@item.ContactId">Edit</a>
+									</td> -->
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="second">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									@Html.DisplayNameFor(model => model.Accounts[0].AccountName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Accounts[0].AccountNumber)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Accounts[0].VatNumber)
+								</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model.Accounts)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.AccountName)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.AccountNumber)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.VatNumber)
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

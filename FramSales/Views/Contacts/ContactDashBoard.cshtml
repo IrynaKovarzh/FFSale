@@ -1,0 +1,86 @@
+﻿@model FramSales.Models.RelatedContactsAccounts
+
+<!--Contacts Accounts Tabs-->
+
+@using (Html.BeginForm("ContactDashBoard", "Contacts", FormMethod.Get))
+{
+	<div class="container">
+		<div role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">Contacts</a></li>
+				<li role="presentation"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">Accounts</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="first">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].FirstName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].LastName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Contacts[0].Email)
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							@foreach (var item in Model.Contacts)
+							{
+							<tr>
+								<td>
+									@Html.DisplayFor(modelItem => item.FirstName)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.LastName)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Email)
+								</td>
+								<td>
+									@Html.ActionLink(">", "ContactDetailsGet", new { id = @item.ContactId })
+								</td>
+							</tr>
+							}
+						</tbody>
+					</table>
+
+				</div>
+				<div role="tabpanel" class="tab-pane" id="second">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									@Html.DisplayNameFor(model => model.Accounts[0].AccountName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Accounts[0].AccountNumber)
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							@foreach (var item in Model.Accounts)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.AccountName)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.AccountNumber)
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+}
